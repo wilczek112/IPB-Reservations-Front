@@ -7,35 +7,25 @@ import Add from './Add';
 import Edit from './Edit';
 
 const Dashboard = ({ setIsAuthenticated }) => {
-  const [reservations, setReservations] = useState([]);
-  const [selectedReservation, setSelectedReservation] = useState(null);
+  const [rooms, setRooms] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [refreshData, setRefreshData] = useState(false);
 
-  // Fetch data from your API
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/reservations/');
+      const response = await fetch('http://localhost:8000/room');
       const data = await response.json();
-      // Map the data to match the reservation schema
-      const mappedData = data.map(item => ({
-        id: item._id,
-        StartTime: item.StartTime,
-        EndTime: item.EndTime,
-        RoomId: item.RoomId,
-        ProfessorId: item.ProfessorId,
-        Status: item.Status,
-        SchoolId: item.SchoolId,
-      }));
-      setReservations(mappedData);
+      setRooms(data);
     };
     fetchData();
-  }, []);
+  }, [refreshData]);
 
   const handleEdit = id => {
-    const [reservation] = reservations.filter(reservation => reservation.id === id);
+    const [room] = rooms.filter(room => room._id === id); // Corrected here
 
-    setSelectedReservation(reservation);
+    setSelectedRoom(room);
     setIsEditing(true);
   };
 
@@ -49,8 +39,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(async result => {
       if (result.value) {
-        // Send a DELETE request to your API
-        const response = await fetch(`http://localhost:8000/reservation/${id}`, {
+        const response = await fetch(`http://localhost:8000/room/${id}`, { // Corrected here
           method: 'DELETE',
         });
 
@@ -58,24 +47,24 @@ const Dashboard = ({ setIsAuthenticated }) => {
           Swal.fire({
             icon: 'success',
             title: 'Deleted!',
-            text: `Reservation has been deleted.`,
+            text: `Room has been deleted.`,
             showConfirmButton: false,
             timer: 1500,
           });
 
-          const reservationsCopy = reservations.filter(reservation => reservation.id !== id);
-          setReservations(reservationsCopy);
+          setRefreshData(prevState => !prevState);
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'Failed to delete reservation.',
+            text: 'Failed to delete room.',
             showConfirmButton: true,
           });
         }
       }
     });
   };
+
   return (
       <div className="container">
         {!isAdding && !isEditing && (
@@ -85,7 +74,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
                   setIsAuthenticated={setIsAuthenticated}
               />
               <Table
-                  reservations={reservations}
+                  rooms={rooms}
                   handleEdit={handleEdit}
                   handleDelete={handleDelete}
               />
@@ -93,15 +82,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
         )}
         {isAdding && (
             <Add
-                setReservations={setReservations}
+                setRooms={setRooms}
                 setIsAdding={setIsAdding}
+                setRefreshData={setRefreshData}
             />
         )}
         {isEditing && (
             <Edit
-                selectedReservation={selectedReservation}
-                setReservations={setReservations}
+                selectedRoom={selectedRoom}
+                setRooms={setRooms}
                 setIsEditing={setIsEditing}
+                setRefreshData={setRefreshData}
             />
         )}
       </div>

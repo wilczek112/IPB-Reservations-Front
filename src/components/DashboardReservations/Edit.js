@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const Edit = ({ selectedReservation, setIsEditing }) => {
-  const id = selectedReservation.id;
+const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add setRefreshData as a prop
+  console.log(selectedReservation); // Add this line
+  const id = selectedReservation._id;
 
-  const [dateAndTime, setDateAndTime] = useState(selectedReservation.DateAndTime);
-  const [department, setDepartment] = useState(selectedReservation.Department);
-  const [equipmentId, setEquipmentId] = useState(selectedReservation.Equipment_id);
-  const [roomId, setRoomId] = useState(selectedReservation.Room_id);
-  const [professorId, setProfessorId] = useState(selectedReservation.Professor_id);
+  const [startTime, setStartTime] = useState(selectedReservation.StartTime);
+  const [endTime, setEndTime] = useState(selectedReservation.EndTime);
+  const [roomId, setRoomId] = useState(selectedReservation.RoomId);
+  const [professorId, setProfessorId] = useState(selectedReservation.ProfessorId);
   const [status, setStatus] = useState(selectedReservation.Status);
+  const [schoolId, setSchoolId] = useState(selectedReservation.SchoolId);
 
   const handleUpdate = async e => {
     e.preventDefault();
 
-    if (!dateAndTime || !department || !equipmentId || !roomId || !professorId || !status) {
+    if (!startTime || !endTime || !roomId || !professorId || !status || !schoolId) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -24,12 +25,12 @@ const Edit = ({ selectedReservation, setIsEditing }) => {
     }
 
     const updatedReservation = {
-      DateAndTime: dateAndTime,
-      Department: department,
-      Equipment_id: equipmentId,
-      Room_id: roomId,
-      Professor_id: professorId,
+      StartTime: startTime,
+      EndTime: endTime,
+      RoomId: roomId,
+      ProfessorId: professorId,
       Status: status,
+      SchoolId: schoolId,
     };
 
     // Send a PUT request to your API
@@ -41,6 +42,7 @@ const Edit = ({ selectedReservation, setIsEditing }) => {
 
     if (response.ok) {
       setIsEditing(false);
+      setRefreshData(prevState => !prevState); // Add this line
       Swal.fire({
         icon: 'success',
         title: 'Updated!',
@@ -62,29 +64,21 @@ const Edit = ({ selectedReservation, setIsEditing }) => {
       <div className="small-container">
         <form onSubmit={handleUpdate}>
           <h1>Edit Reservation</h1>
-          <label htmlFor="dateAndTime">Date and Time</label>
+          <label htmlFor="startTime">Start Time</label>
           <input
-              id="dateAndTime"
-              type="text"
-              name="dateAndTime"
-              value={dateAndTime}
-              onChange={e => setDateAndTime(e.target.value)}
+              id="startTime"
+              type="number"
+              name="startTime"
+              value={startTime}
+              onChange={e => setStartTime(e.target.value)}
           />
-          <label htmlFor="department">Department</label>
+          <label htmlFor="endTime">End Time</label>
           <input
-              id="department"
-              type="text"
-              name="department"
-              value={department}
-              onChange={e => setDepartment(e.target.value)}
-          />
-          <label htmlFor="equipmentId">Equipment ID</label>
-          <input
-              id="equipmentId"
-              type="text"
-              name="equipmentId"
-              value={equipmentId}
-              onChange={e => setEquipmentId(e.target.value)}
+              id="endTime"
+              type="number"
+              name="endTime"
+              value={endTime}
+              onChange={e => setEndTime(e.target.value)}
           />
           <label htmlFor="roomId">Room ID</label>
           <input
@@ -109,6 +103,14 @@ const Edit = ({ selectedReservation, setIsEditing }) => {
               name="status"
               value={status}
               onChange={e => setStatus(e.target.value)}
+          />
+          <label htmlFor="schoolId">School ID</label>
+          <input
+              id="schoolId"
+              type="text"
+              name="schoolId"
+              value={schoolId}
+              onChange={e => setSchoolId(e.target.value)}
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Update" />
