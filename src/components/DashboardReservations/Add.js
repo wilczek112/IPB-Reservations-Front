@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a prop
+const Add = ({ setIsAdding, setRefreshData }) => {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [roomId, setRoomId] = useState('');
@@ -30,7 +30,6 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
       SchoolId: schoolId,
     };
 
-    // Send a POST request to your API
     const response = await fetch('http://localhost:8000/reservation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,7 +38,7 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
 
     if (response.ok) {
       setIsAdding(false);
-      setRefreshData(prevState => !prevState); // Add this line
+      setRefreshData(prevState => !prevState);
       Swal.fire({
         icon: 'success',
         title: 'Added!',
@@ -64,18 +63,20 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
           <label htmlFor="startTime">Start Time</label>
           <input
               id="startTime"
-              type="number"
+              type="time"
               name="startTime"
               value={startTime}
               onChange={e => setStartTime(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="endTime">End Time</label>
           <input
               id="endTime"
-              type="number"
+              type="time"
               name="endTime"
               value={endTime}
               onChange={e => setEndTime(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="roomId">Room ID</label>
           <input
@@ -84,6 +85,7 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
               name="roomId"
               value={roomId}
               onChange={e => setRoomId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="professorId">Professor ID</label>
           <input
@@ -92,6 +94,7 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
               name="professorId"
               value={professorId}
               onChange={e => setProfessorId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="status">Status</label>
           <input
@@ -100,6 +103,7 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
               name="status"
               value={status}
               onChange={e => setStatus(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="schoolId">School ID</label>
           <input
@@ -108,6 +112,7 @@ const Add = ({ setIsAdding, setRefreshData }) => { // Add setRefreshData as a pr
               name="schoolId"
               value={schoolId}
               onChange={e => setSchoolId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Add" />

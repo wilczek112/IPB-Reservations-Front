@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import 'tailwindcss/tailwind.css';
+import '../../index.css';
+import { Link } from 'react-router-dom';
 
 import Header from './Header';
 import Table from './Table';
@@ -11,9 +14,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
   const [selectedReservation, setSelectedReservation] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [refreshData, setRefreshData] = useState(false); // Add this line
+  const [refreshData, setRefreshData] = useState(false);
 
-  // Fetch data from your API
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('http://localhost:8000/reservation/');
@@ -21,7 +23,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       setReservations(data);
     };
     fetchData();
-  }, [refreshData]); // Add refreshData as a dependency
+  }, [refreshData]);
 
   const handleEdit = id => {
     const [reservation] = reservations.filter(reservation => reservation._id === id);
@@ -40,7 +42,6 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(async result => {
       if (result.value) {
-        // Send a DELETE request to your API
         const response = await fetch(`http://localhost:8000/reservation/${id}`, {
           method: 'DELETE',
         });
@@ -54,7 +55,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
             timer: 1500,
           });
 
-          setRefreshData(prevState => !prevState); // Add this line
+          setRefreshData(prevState => !prevState);
         } else {
           Swal.fire({
             icon: 'error',
@@ -66,8 +67,12 @@ const Dashboard = ({ setIsAuthenticated }) => {
       }
     });
   };
+
   return (
-      <div className="container">
+      <div className="container mx-auto px-4 bg-blue-500 text-white">
+        <Link to="/admin" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
+          Back to admin panel
+        </Link>
         {!isAdding && !isEditing && (
             <>
               <Header
@@ -85,7 +90,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
             <Add
                 setReservations={setReservations}
                 setIsAdding={setIsAdding}
-                setRefreshData={setRefreshData} // Pass setRefreshData to Add
+                setRefreshData={setRefreshData}
             />
         )}
         {isEditing && (
@@ -93,7 +98,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 selectedReservation={selectedReservation}
                 setReservations={setReservations}
                 setIsEditing={setIsEditing}
-                setRefreshData={setRefreshData} // Pass setRefreshData to Edit
+                setRefreshData={setRefreshData}
             />
         )}
       </div>

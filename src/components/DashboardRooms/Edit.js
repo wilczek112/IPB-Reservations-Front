@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
-  const id = selectedRoom._id; // Corrected here
+  const id = selectedRoom._id;
 
   const [room, setRoom] = useState(selectedRoom.Room);
   const [type, setType] = useState(selectedRoom.Type);
@@ -30,7 +30,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
       EquipmentList: equipmentList,
     };
 
-    const response = await fetch(`http://localhost:8000/room/${id}`, { // Corrected here
+    const response = await fetch(`http://localhost:8000/room/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedRoom),
@@ -67,6 +67,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               name="room"
               value={room}
               onChange={e => setRoom(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="type">Type</label>
           <input
@@ -75,6 +76,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               name="type"
               value={type}
               onChange={e => setType(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="schoolId">School ID</label>
           <input
@@ -83,6 +85,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               name="schoolId"
               value={schoolId}
               onChange={e => setSchoolId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="capacity">Capacity</label>
           <input
@@ -91,6 +94,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               name="capacity"
               value={capacity}
               onChange={e => setCapacity(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="equipmentList">Equipment List</label>
           <input
@@ -99,6 +103,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               name="equipmentList"
               value={equipmentList}
               onChange={e => setEquipmentList(e.target.value.split(','))}
+              style={{ color: 'black' }} // Dodane style
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Update" />

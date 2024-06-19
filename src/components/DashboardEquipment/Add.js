@@ -59,6 +59,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="name"
               value={name}
               onChange={e => setName(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="iconId">Icon ID</label>
           <input
@@ -67,6 +68,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="iconId"
               value={iconId}
               onChange={e => setIconId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Add" />

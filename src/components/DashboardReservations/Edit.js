@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add setRefreshData as a prop
-  console.log(selectedReservation); // Add this line
+const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => {
   const id = selectedReservation._id;
 
   const [startTime, setStartTime] = useState(selectedReservation.StartTime);
@@ -33,7 +32,6 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
       SchoolId: schoolId,
     };
 
-    // Send a PUT request to your API
     const response = await fetch(`http://localhost:8000/reservation/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -42,7 +40,7 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
 
     if (response.ok) {
       setIsEditing(false);
-      setRefreshData(prevState => !prevState); // Add this line
+      setRefreshData(prevState => !prevState);
       Swal.fire({
         icon: 'success',
         title: 'Updated!',
@@ -67,18 +65,20 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
           <label htmlFor="startTime">Start Time</label>
           <input
               id="startTime"
-              type="number"
+              type="time"
               name="startTime"
               value={startTime}
               onChange={e => setStartTime(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="endTime">End Time</label>
           <input
               id="endTime"
-              type="number"
+              type="time"
               name="endTime"
               value={endTime}
               onChange={e => setEndTime(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="roomId">Room ID</label>
           <input
@@ -87,6 +87,7 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
               name="roomId"
               value={roomId}
               onChange={e => setRoomId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="professorId">Professor ID</label>
           <input
@@ -95,6 +96,7 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
               name="professorId"
               value={professorId}
               onChange={e => setProfessorId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="status">Status</label>
           <input
@@ -103,6 +105,7 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
               name="status"
               value={status}
               onChange={e => setStatus(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="schoolId">School ID</label>
           <input
@@ -111,6 +114,7 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => { // Add
               name="schoolId"
               value={schoolId}
               onChange={e => setSchoolId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Update" />

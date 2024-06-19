@@ -65,6 +65,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="room"
               value={room}
               onChange={e => setRoom(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="type">Type</label>
           <input
@@ -73,6 +74,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="type"
               value={type}
               onChange={e => setType(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="schoolId">School ID</label>
           <input
@@ -81,6 +83,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="schoolId"
               value={schoolId}
               onChange={e => setSchoolId(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="capacity">Capacity</label>
           <input
@@ -89,6 +92,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="capacity"
               value={capacity}
               onChange={e => setCapacity(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="equipmentList">Equipment List</label>
           <input
@@ -97,6 +101,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="equipmentList"
               value={equipmentList}
               onChange={e => setEquipmentList(e.target.value.split(','))}
+              style={{ color: 'black' }} // Dodane style
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Add" />

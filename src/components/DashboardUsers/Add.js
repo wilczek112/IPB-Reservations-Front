@@ -65,6 +65,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="name"
               value={name}
               onChange={e => setName(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="surname">Surname</label>
           <input
@@ -73,6 +74,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="surname"
               value={surname}
               onChange={e => setSurname(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="role">Role</label>
           <input
@@ -81,6 +83,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="role"
               value={role}
               onChange={e => setRole(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="email">Email</label>
           <input
@@ -89,6 +92,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <label htmlFor="password">Password</label>
           <input
@@ -97,6 +101,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
+              style={{ color: 'black' }} // Dodane style
           />
           <div style={{ marginTop: '30px' }}>
             <input type="submit" value="Add" />
