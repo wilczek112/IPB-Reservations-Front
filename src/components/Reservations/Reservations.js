@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
+import ActiveUser from '../App/ActiveUser';
 
 function Reservations() {
+    const user = ActiveUser.getUser();
+    const professorId = user.professorId;
     const [currentReservations, setCurrentReservations] = useState([]);
     const [previousReservations, setPreviousReservations] = useState([]);
     const [tab, setTab] = useState('current');
@@ -13,15 +16,13 @@ function Reservations() {
         fetchData();
     }, []);
 
-
     const fetchData = async () => {
-        const response = await fetch('http://localhost:8000/reservation/');
+        const response = await fetch(`http://localhost:8000/reservation/professor/${professorId}`);
         const data = await response.json();
-        const now = Date.now() / 1000; // get current time in seconds
+        const now = Date.now() / 1000;
         setCurrentReservations(data.filter(reservation => reservation.EndTime >= now && reservation.Status !== 'Cancelled').sort((a, b) => b.StartTime - a.StartTime));
         setPreviousReservations(data.filter(reservation => reservation.EndTime < now || reservation.Status === 'Cancelled').sort((a, b) => b.StartTime - a.StartTime));
     };
-
 
     const formatTimestamp = (timestamp) => {
         const date = new Date(timestamp * 1000);
@@ -55,6 +56,7 @@ function Reservations() {
             if (result.value) {
                 const reservationToCancel = currentReservations.find(reservation => reservation._id === id);
                 reservationToCancel.Status = 'Cancelled';
+                reservationToCancel.ProfessorId = professorId;
                 const response = await fetch(`http://localhost:8000/reservation/cancel/${id}`, {
                     method: 'PATCH',
                     headers: {

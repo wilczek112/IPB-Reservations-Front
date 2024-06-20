@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react'; // import useContext
 import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
 import { useNavigate } from 'react-router-dom';
+import ActiveUser from '../App/ActiveUser';
 
 function ReservationPage() {
     const navigate = useNavigate();
     const now = new Date();
-    now.setMinutes(0, 0, 0); // Round down to the nearest hour
-    const twoHoursLater = new Date(now.getTime() + 2 * 60 * 60 * 1000);
-    const [startDate, setStartDate] = useState(now.toISOString().substring(0,16));
+    now.setMinutes(0, 0, 0);
+    const repaire_time = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+    const twoHoursLater = new Date(repaire_time.getTime() + 2 * 60 * 60 * 1000);
+    const [startDate, setStartDate] = useState(repaire_time.toISOString().substring(0,16));
     const [endDate, setEndDate] = useState(twoHoursLater.toISOString().substring(0,16));
-    const [capacity, setCapacity] = useState(1);
+    const [capacity, setCapacity] = useState(30);
     const [equipmentList, setEquipmentList] = useState([]);
     const [filters, setFilters] = useState({});
+    const user = ActiveUser.getUser();
+    const professorId = user.professorId;
 
     useEffect(() => {
         fetch('http://localhost:8000/equipment/')
@@ -21,7 +25,7 @@ function ReservationPage() {
             .then(data => {
                 setEquipmentList(data);
                 const initialFilters = data.reduce((acc, equipment) => {
-                    acc[equipment.name] = false;
+                    acc[equipment._id] = false; // Use equipment._id instead of equipment.name
                     return acc;
                 }, {});
                 setFilters(initialFilters);
@@ -49,7 +53,7 @@ function ReservationPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(startDate, endDate, capacity, filters);
-        navigate('/availablerooms', { state: { startDate, endDate, capacity, equipment: filters } });
+        navigate('/availablerooms', { state: { startDate, endDate, capacity, equipment: filters, professorId } });
     };
 
     return (
@@ -78,8 +82,8 @@ function ReservationPage() {
                     <legend className="text-lg font-medium mb-2">Filters</legend>
                     <div className="grid grid-cols-2 gap-4">
                         {equipmentList.map((equipment) => (
-                            <label key={equipment.name} className="flex items-center">
-                                <input type="checkbox" name={equipment.name} checked={filters[equipment.name]}
+                            <label key={equipment._id} className="flex items-center">
+                                <input type="checkbox" name={equipment._id} checked={filters[equipment._id]}
                                        onChange={handleFilterChange} className="mr-2"/>
                                 {equipment.name.charAt(0).toUpperCase() + equipment.name.slice(1)}
                             </label>

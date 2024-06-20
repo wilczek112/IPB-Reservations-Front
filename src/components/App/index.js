@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import Login from '../Login';
 import MainPage from '../MainPage/index';
 import DashboardReservations from '../DashboardReservations';
 import DashboardRooms from '../DashboardRooms';
-import DashboardEquipment from '../DashboardEquipment'; // Keep DashboardEquipment
-import DashboardUsers from '../DashboardUsers'; // Import DashboardUsers
+import DashboardEquipment from '../DashboardEquipment';
+import DashboardUsers from '../DashboardUsers';
 import Profile from '../Profile/Profile';
 import Reservations from '../Reservations/Reservations';
 import AvailableRooms from '../AvailableRooms/AvailableRooms';
@@ -16,7 +18,21 @@ const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
 
     useEffect(() => {
-        setIsAuthenticated(JSON.parse(localStorage.getItem('is_authenticated')));
+        const checkToken = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/user/check-token', {
+                    headers: { Authorization: `Bearer ${Cookies.get('token')}` }
+                });
+
+                setIsAuthenticated(response.status === 200);
+            } catch (error) {
+                console.error('Error checking token:', error);
+                setIsAuthenticated(false);
+                Cookies.remove('token');
+            }
+        };
+
+        checkToken();
     }, []);
 
     return (
@@ -32,7 +48,7 @@ const App = () => {
                        element={isAuthenticated ? <DashboardEquipment/> : <Login setIsAuthenticated={setIsAuthenticated}/>}/>
                 <Route path="/admin/users"
                        element={isAuthenticated ? <DashboardUsers/> : <Login setIsAuthenticated={setIsAuthenticated}/>}/>
-                <Route path="/crud-app"
+                <Route path="/"
                        element={isAuthenticated ? <MainPage/> : <Login setIsAuthenticated={setIsAuthenticated}/>}/>
                 <Route path="/profile"
                        element={isAuthenticated ? <Profile/> : <Login setIsAuthenticated={setIsAuthenticated}/>}/>

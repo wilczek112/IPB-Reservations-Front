@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import bcrypt from 'bcryptjs';
 
 const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
   const id = selectedUser._id;
@@ -9,6 +10,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
   const [role, setRole] = useState(selectedUser.role);
   const [email, setEmail] = useState(selectedUser.email);
   const [password, setPassword] = useState(selectedUser.password);
+
 
   const handleUpdate = async e => {
     e.preventDefault();
@@ -22,12 +24,16 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
       });
     }
 
+    // Hash the password
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+
     const updatedUser = {
       name: name,
       surname: surname,
       role: role,
       email: email,
-      password: password,
+      password: hashedPassword,  // Store the hashed password
     };
 
     const response = await fetch(`http://localhost:8000/user/${id}`, {
@@ -55,6 +61,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
       });
     }
   };
+
 
   return (
       <div className="small-container">
