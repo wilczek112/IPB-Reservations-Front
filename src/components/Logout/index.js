@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';
+import { AuthContext } from '../Authentication/AuthContext';
+import ActiveUser from "../Authentication/ActiveUser";
 
-const Logout = ({ setIsAuthenticated }) => {
+const Logout = () => {
+  const { setIsAuthenticated } = useContext(AuthContext);
+
   const handleLogout = () => {
     Swal.fire({
       icon: 'question',
@@ -11,6 +16,8 @@ const Logout = ({ setIsAuthenticated }) => {
       confirmButtonText: 'Yes',
     }).then(result => {
       if (result.value) {
+        Cookies.remove('token');
+
         Swal.fire({
           timer: 1500,
           showConfirmButton: false,
@@ -20,6 +27,8 @@ const Logout = ({ setIsAuthenticated }) => {
           willClose: () => {
             localStorage.setItem('is_authenticated', false);
             setIsAuthenticated(false);
+            ActiveUser.clearUser();
+            window.location.reload();
           },
         });
       }
@@ -27,13 +36,13 @@ const Logout = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <button
-      style={{ marginLeft: '12px' }}
-      className="muted-button"
-      onClick={handleLogout}
-    >
-      Logout
-    </button>
+      <button
+          style={{marginLeft: '12px'}}
+          className="muted-button"
+          onClick={handleLogout}
+      >
+        Logout
+      </button>
   );
 };
 

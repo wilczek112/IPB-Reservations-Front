@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import '../../index.css';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
-import ActiveUser from '../App/ActiveUser';
+import ActiveUser from '../Authentication/ActiveUser';
 import { useTable, useSortBy } from 'react-table';
 
 function AvailableRooms() {

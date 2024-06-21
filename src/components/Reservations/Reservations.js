@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
-import ActiveUser from '../App/ActiveUser';
+import ActiveUser from '../Authentication/ActiveUser';
 
 function Reservations() {
     const user = ActiveUser.getUser();
