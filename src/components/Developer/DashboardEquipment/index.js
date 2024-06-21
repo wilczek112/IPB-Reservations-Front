@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
-import '../../index.css';
+import '../../../index.css';
 import { Link } from 'react-router-dom';
 
 import Header from './Header';
@@ -10,25 +10,25 @@ import Add from './Add';
 import Edit from './Edit';
 
 const Dashboard = ({ setIsAuthenticated }) => {
-  const [rooms, setRooms] = useState([]);
-  const [selectedRoom, setSelectedRoom] = useState(null);
+  const [equipments, setEquipments] = useState([]);
+  const [selectedEquipment, setSelectedEquipment] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/room');
+      const response = await fetch('http://localhost:8000/equipment');
       const data = await response.json();
-      setRooms(data);
+      setEquipments(data);
     };
     fetchData();
   }, [refreshData]);
 
   const handleEdit = id => {
-    const [room] = rooms.filter(room => room._id === id);
+    const [equipment] = equipments.filter(equipment => equipment._id === id);
 
-    setSelectedRoom(room);
+    setSelectedEquipment(equipment);
     setIsEditing(true);
   };
 
@@ -42,7 +42,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(async result => {
       if (result.value) {
-        const response = await fetch(`http://localhost:8000/room/${id}`, {
+        const response = await fetch(`http://localhost:8000/equipment/${id}`, {
           method: 'DELETE',
         });
 
@@ -50,7 +50,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           Swal.fire({
             icon: 'success',
             title: 'Deleted!',
-            text: `Room has been deleted.`,
+            text: `Equipment has been deleted.`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -60,7 +60,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'Failed to delete room.',
+            text: 'Failed to delete equipment.',
             showConfirmButton: true,
           });
         }
@@ -70,8 +70,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
   return (
       <div className="container mx-auto px-4 bg-blue-500 text-white">
-        <Link to="/admin" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
-          Back to admin panel
+        <Link to="/developer" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
+          Back to developer panel
         </Link>
         {!isAdding && !isEditing && (
             <>
@@ -80,7 +80,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
                   setIsAuthenticated={setIsAuthenticated}
               />
               <Table
-                  rooms={rooms}
+                  equipments={equipments}
                   handleEdit={handleEdit}
                   handleDelete={handleDelete}
               />
@@ -88,15 +88,15 @@ const Dashboard = ({ setIsAuthenticated }) => {
         )}
         {isAdding && (
             <Add
-                setRooms={setRooms}
+                setEquipments={setEquipments}
                 setIsAdding={setIsAdding}
                 setRefreshData={setRefreshData}
             />
         )}
         {isEditing && (
             <Edit
-                selectedRoom={selectedRoom}
-                setRooms={setRooms}
+                selectedEquipment={selectedEquipment}
+                setEquipments={setEquipments}
                 setIsEditing={setIsEditing}
                 setRefreshData={setRefreshData}
             />

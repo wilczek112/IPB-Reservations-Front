@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react'; // import useContext
+import React, { useEffect, useState, useContext } from 'react';
 import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
 import { useNavigate } from 'react-router-dom';
-import ActiveUser from '../App/ActiveUser';
+import ActiveUser from '../Authentication/ActiveUser';
 
 function ReservationPage() {
     const navigate = useNavigate();

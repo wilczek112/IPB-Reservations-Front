@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import '../../index.css';
 import Swal from "sweetalert2";
 import bcrypt from 'bcryptjs';
-import ActiveUser from '../App/ActiveUser';
+import ActiveUser from '../Authentication/ActiveUser';
 
 
 
@@ -15,7 +15,7 @@ function ProfilePage() {
     const [newPassword, setNewPassword] = useState('');
 
     const fetchData = async () => {
-        const response = await fetch('http://localhost:8000/user/email/wilk.o@o2.pl');
+        const response = await fetch(`http://localhost:8000/user/email/${localuser.email}`);
         const data = await response.json();
         setUser(data);
     };
@@ -51,7 +51,7 @@ function ProfilePage() {
         const salt = bcrypt.genSaltSync(10);
         const hashedNewPassword = bcrypt.hashSync(newPassword, salt);
 
-        const response = await fetch(`http://localhost:8000/user/cph/wilk.o@o2.pl`, {
+        const response = await fetch(`http://localhost:8000/user/cph/${localuser.email}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

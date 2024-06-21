@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
-import '../../index.css';
+import '../../../index.css';
 import { Link } from 'react-router-dom';
 
 import Header from './Header';
@@ -10,25 +10,25 @@ import Add from './Add';
 import Edit from './Edit';
 
 const Dashboard = ({ setIsAuthenticated }) => {
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [reservations, setReservations] = useState([]);
+  const [selectedReservation, setSelectedReservation] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/user');
+      const response = await fetch('http://localhost:8000/reservation/');
       const data = await response.json();
-      setUsers(data);
+      setReservations(data);
     };
     fetchData();
   }, [refreshData]);
 
   const handleEdit = id => {
-    const [user] = users.filter(user => user._id === id);
+    const [reservation] = reservations.filter(reservation => reservation._id === id);
 
-    setSelectedUser(user);
+    setSelectedReservation(reservation);
     setIsEditing(true);
   };
 
@@ -42,7 +42,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(async result => {
       if (result.value) {
-        const response = await fetch(`http://localhost:8000/user/${id}`, {
+        const response = await fetch(`http://localhost:8000/reservation/${id}`, {
           method: 'DELETE',
         });
 
@@ -50,7 +50,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           Swal.fire({
             icon: 'success',
             title: 'Deleted!',
-            text: `User has been deleted.`,
+            text: `Reservation has been deleted.`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -60,7 +60,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'Failed to delete user.',
+            text: 'Failed to delete reservation.',
             showConfirmButton: true,
           });
         }
@@ -70,8 +70,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
   return (
       <div className="container mx-auto px-4 bg-blue-500 text-white">
-        <Link to="/admin" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
-          Back to admin panel
+        <Link to="/developer" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
+          Back to developer panel
         </Link>
         {!isAdding && !isEditing && (
             <>
@@ -80,7 +80,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
                   setIsAuthenticated={setIsAuthenticated}
               />
               <Table
-                  users={users}
+                  reservations={reservations}
                   handleEdit={handleEdit}
                   handleDelete={handleDelete}
               />
@@ -88,15 +88,15 @@ const Dashboard = ({ setIsAuthenticated }) => {
         )}
         {isAdding && (
             <Add
-                setUsers={setUsers}
+                setReservations={setReservations}
                 setIsAdding={setIsAdding}
                 setRefreshData={setRefreshData}
             />
         )}
         {isEditing && (
             <Edit
-                selectedUser={selectedUser}
-                setUsers={setUsers}
+                selectedReservation={selectedReservation}
+                setReservations={setReservations}
                 setIsEditing={setIsEditing}
                 setRefreshData={setRefreshData}
             />
