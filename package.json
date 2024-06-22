@@ -1,6 +1,6 @@
 {
-  "name": "IPB Reservation",
-  "version": "1.0.0",
+  "name": "IPB Reservations Desktop",
+  "version": "1.0.2",
   "homepage": "/",
   "private": true,
   "base_platform_author": {

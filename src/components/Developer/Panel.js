@@ -7,7 +7,7 @@ const MainPage = () => {
     return (
         <div className="bg-blue-500 p-6">
             <header className="text-white text-3xl mb-4">
-                <Link to="/" className="hover:underline">Activity and space reservation developer panel</Link>            </header>
+                <Link to="/" className="hover:underline">IPB Reservations</Link>            </header>
             <h1 className="text-white text-2xl mb-4">Welcome to developer panel</h1>
             <nav>
                 <ul className="space-y-4">
