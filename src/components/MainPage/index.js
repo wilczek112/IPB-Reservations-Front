@@ -60,7 +60,7 @@ function ReservationPage() {
         <div>
             <Header />
             <form onSubmit={handleSubmit} className="p-8 bg-white shadow-md rounded-lg max-w-md mx-auto space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-center">Reservation</h2>
+                <h2 className="text-2xl font-bold mb-4 text-center">Classroom search</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <label className="flex flex-col space-y-1">
                         <span className="text-gray-700">Start Date</span>

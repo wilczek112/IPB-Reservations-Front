@@ -11,7 +11,7 @@ function Header({ setIsAuthenticated }) {
         <header className="bg-blue-500 text-white shadow-md py-4">
             <div className="container mx-auto flex justify-between items-center px-6">
                 <Link to="/" className="font-bold text-xl hover:text-blue-200 transition duration-200 ease-in-out">
-                    Activities and Space Reservation
+                    IPB Reservations
                 </Link>
                 <nav>
                     <ul className="flex space-x-4">
@@ -27,7 +27,7 @@ function Header({ setIsAuthenticated }) {
                         )}
                         {user && (user.role === 'user' || user.role === 'developer') && (
                             <li>
-                                <Link to="/reservations" className="px-3 py-2 bg-white text-blue-500 rounded hover:bg-blue-200">Reservation</Link>
+                                <Link to="/reservations" className="px-3 py-2 bg-white text-blue-500 rounded hover:bg-blue-200">Reservations</Link>
                             </li>
                             )}
                         <li>
