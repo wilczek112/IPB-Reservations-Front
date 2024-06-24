@@ -4,37 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c61f2a98-5756-4277-9ccb-888d19bb012f" name="Changes" comment="CSS update v2">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Example when connected to API.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/android-chrome-512x512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/browserconfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mstile-150x150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/safari-pinned-tab.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Authentication/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/AuthContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AvailableRooms/AvailableRooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AvailableRooms/AvailableRooms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Background/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Background/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Developer/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/Panel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainPage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Reservations/Reservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reservations/Reservations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loading_background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo_ipb.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo_ipb.png" afterDir="false" />
-    </list>
+    <list default="true" id="c61f2a98-5756-4277-9ccb-888d19bb012f" name="Changes" comment="App prepared for production. Updated files, descriptions and version." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +114,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719240544391</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="App prepared for production. Updated files, descriptions and version.">
+      <option name="closed" value="true" />
+      <created>1719251710032</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719251710032</updated>
+    </task>
+    <task id="LOCAL-00004" summary="App prepared for production. Updated files, descriptions and version.">
+      <option name="closed" value="true" />
+      <created>1719251729294</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719251729294</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +150,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="CSS update v1" />
     <MESSAGE value="CSS update v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS update v2" />
+    <MESSAGE value="App prepared for production. Updated files, descriptions and version." />
+    <option name="LAST_COMMIT_MESSAGE" value="App prepared for production. Updated files, descriptions and version." />
   </component>
 </project>
