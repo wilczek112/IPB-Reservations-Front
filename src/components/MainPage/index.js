@@ -1,5 +1,7 @@
+// index.js
+
 import React, { useEffect, useState } from 'react';
-import 'tailwindcss/tailwind.css';
+import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import ActiveUser from '../Authentication/ActiveUser';
@@ -42,6 +44,7 @@ function ReservationPage({ setIsAuthenticated }) {
     const handleStartDateChange = (event) => {
         setStartDate(event.target.value);
     };
+
     const handleEndDateChange = (event) => {
         setEndDate(event.target.value);
     };
@@ -59,25 +62,42 @@ function ReservationPage({ setIsAuthenticated }) {
     return (
         <div className="relative min-h-screen">
             <Background />
-            <div className="relative z-10"> {/* Add z-index to ensure it's above the background */}
+            <div className="relative z-10">
                 <Header setIsAuthenticated={setIsAuthenticated} />
-                <form onSubmit={handleSubmit} className="relative p-8 bg-bouquet shadow-md rounded-lg max-w-md mx-auto space-y-4 mt-8 z-10">
+
+                <form onSubmit={handleSubmit} className="relative p-4 bg-bouquet shadow-md rounded-lg max-w-xl mx-auto space-y-6 mt-8 z-10">
                     <h2 className="text-2xl font-bold mb-4 text-center text-white">Classroom search</h2>
                     <div className="grid grid-cols-2 gap-4">
                         <label className="flex flex-col space-y-1">
                             <span className="text-white">Start Date</span>
-                            <input type="datetime-local" value={startDate} onChange={handleStartDateChange}
-                                   className="p-2 border rounded"/>
+                            <input
+                                type="datetime-local"
+                                value={startDate}
+                                onChange={handleStartDateChange}
+                                className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-tapestry"
+                                style={{ '--ring-color': 'var(--tapestry)' }}
+                            />
                         </label>
                         <label className="flex flex-col space-y-1">
                             <span className="text-white">End Date</span>
-                            <input type="datetime-local" value={endDate} onChange={handleEndDateChange}
-                                   className="p-2 border rounded"/>
+                            <input
+                                type="datetime-local"
+                                value={endDate}
+                                onChange={handleEndDateChange}
+                                className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-tapestry"
+                                style={{ '--ring-color': 'var(--tapestry)' }}
+                            />
                         </label>
                         <label className="flex flex-col space-y-1 col-span-2">
-                            <span className="text-white">Capacity</span>
-                            <input type="number" value={capacity} onChange={(e) => setCapacity(e.target.value)} min="1"
-                                   className="p-2 border rounded w-full max-w-xs"/>
+                            <span className="text-white mx-auto">Capacity</span>
+                            <input
+                                type="number"
+                                value={capacity}
+                                onChange={(e) => setCapacity(e.target.value)}
+                                min="1"
+                                className="p-2 border rounded w-full w-32 mx-auto focus:outline-none focus:ring-2 focus:ring-tapestry"
+                                style={{ '--ring-color': 'var(--tapestry)' }}
+                            />
                         </label>
                     </div>
                     <fieldset className="mt-6">
@@ -85,14 +105,24 @@ function ReservationPage({ setIsAuthenticated }) {
                         <div className="grid grid-cols-2 gap-4">
                             {equipmentList.map((equipment) => (
                                 <label key={equipment._id} className="flex items-center space-x-2">
-                                    <input type="checkbox" name={equipment._id} checked={filters[equipment._id]} onChange={handleFilterChange}
-                                           className="form-checkbox h-5 w-5 text-cardinal-pink"/>
+                                    <input
+                                        type="checkbox"
+                                        name={equipment._id}
+                                        checked={filters[equipment._id]}
+                                        onChange={handleFilterChange}
+                                        className="form-checkbox h-5 w-5 text-tapestry focus:outline-none"
+                                    />
                                     <span className="text-white">{equipment.name}</span>
                                 </label>
                             ))}
                         </div>
                     </fieldset>
-                    <button type="submit" className="w-full bg-loulou text-white p-2 rounded hover:bg-tapestry">Search</button>
+                    <button
+                        type="submit"
+                        className="w-full bg-loulou text-white p-2 rounded hover:bg-tapestry focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tapestry"
+                    >
+                        Search
+                    </button>
                 </form>
             </div>
         </div>

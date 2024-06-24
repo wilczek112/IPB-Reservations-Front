@@ -88,15 +88,15 @@ function AdminReservations() {
     return (
         <div>
             <Header />
-            <div className="p-8 bg-white shadow-md rounded-lg max-w-xl mx-auto">
-                <h2 className="text-2xl font-bold mb-4 text-center">Admin Reservations</h2>
+            <div className="p-8 bg-bouquet shadow-md rounded-lg max-w-md mx-auto">
+                <h2 className="text-2xl font-bold mb-4 text-center text-white">Admin Reservations</h2>
                 <div className="flex justify-center mb-4">
-                    <button onClick={() => setTab('pending')} className={`px-4 py-2 rounded ${tab === 'pending' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 border-blue-500 border-2'}`}>Pending ({pendingReservations.length})</button>
-                    <button onClick={() => setTab('done')} className={`px-4 py-2 rounded ${tab === 'done' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 border-blue-500 border-2'}`}>Done ({doneReservations.length})</button>
+                    <button onClick={() => setTab('pending')} className={`px-4 py-2 rounded ${tab === 'pending' ? 'bg-loulou text-white' : 'bg-white text-loulou border-loulou'}`}>Pending ({pendingReservations.length})</button>
+                    <button onClick={() => setTab('done')} className={`px-4 py-2 rounded ${tab === 'done' ? 'bg-loulou text-white' : 'bg-white text-loulou border-loulou'}`}>Done ({doneReservations.length})</button>
                 </div>
                 {tab === 'pending' ? (
                     <div>
-                        <h3 className="text-lg font-medium mb-2">Pending Reservations</h3>
+                        <h3 className="text-lg font-medium mb-2 text-white">Pending Reservations</h3>
                         {pendingReservations.map((reservation, index) => (
                             <div key={index} className={`p-4 border-2 rounded mb-4 ${getStatusColor(reservation.Status)}`}>
                                 <h4 className="font-bold">Room {reservation.RoomId}</h4>
@@ -112,7 +112,7 @@ function AdminReservations() {
                     </div>
                 ) : (
                     <div>
-                        <h3 className="text-lg font-medium mb-2">Done Reservations</h3>
+                        <h3 className="text-lg font-medium mb-2 text-white">Done Reservations</h3>
                         {doneReservations.map((reservation, index) => (
                             <div key={index} className={`p-4 border-2 rounded mb-4 ${getStatusColor(reservation.Status)}`}>
                                 <h4 className="font-bold">Room {reservation.RoomId}</h4>

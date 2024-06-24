@@ -12,10 +12,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 /* Custom background */
 .bg-checkerboard {
   background-image: url('./logo_ipb.png');
