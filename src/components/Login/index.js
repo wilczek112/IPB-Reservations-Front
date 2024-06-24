@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Swal from 'sweetalert2';
-import 'tailwindcss/tailwind.css'; // Ensure correct styling import
+import 'tailwindcss/tailwind.css';
 import { Navigate } from 'react-router-dom';
 import ActiveUser from '../Authentication/ActiveUser';
 import { AuthContext } from '../Authentication/AuthContext';
@@ -8,6 +8,8 @@ import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import Cookies from 'js-cookie';
 import '../../index.css';
+import Background from '../Background/background';
+
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -93,13 +95,14 @@ const Login = () => {
   };
 
   return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <Background />
+        <div className="max-w-md w-full space-y-8 z-10 bg-bouquet p-10 rounded-lg shadow-lg">
           <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">IPB Reservations Desktop</h2>
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-white">IPB Reservations Desktop</h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-            <input type="hidden" name="remember" value="true" />
+            <input type="hidden" name="remember" value="true"/>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -111,7 +114,7 @@ const Login = () => {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-2 focus:ring-tapestry"
                     placeholder="Email address"
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
@@ -127,7 +130,7 @@ const Login = () => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-2 focus:ring-tapestry"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -138,9 +141,9 @@ const Login = () => {
               <button
                   type="submit"
                   disabled={loading}
-                  className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-                      loading ? 'bg-indigo-300' : 'bg-indigo-600 hover:bg-indigo-700'
-                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                  className={`w-full p-2 rounded text-white ${
+                      loading ? 'bg-melanie' : 'bg-loulou hover:bg-tapestry'
+                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tapestry`}
               >
                 {loading ? 'Signing in...' : 'Sign in'}
               </button>

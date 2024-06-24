@@ -1,7 +1,5 @@
-// index.js
-
 import React, { useEffect, useState } from 'react';
-import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
+import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import ActiveUser from '../Authentication/ActiveUser';

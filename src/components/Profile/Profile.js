@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Swal from 'sweetalert2';
-import 'tailwindcss/tailwind.css'; // Ensure correct styling import
+import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
-import '../../index.css'; // Assuming correct styling import
+import '../../index.css';
 import bcrypt from 'bcryptjs';
 import ActiveUser from '../Authentication/ActiveUser';
 
@@ -12,16 +12,16 @@ function ProfilePage() {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         const response = await fetch(`http://localhost:8000/user/email/${localuser.email}`);
         const data = await response.json();
         setUser(data);
-    };
+    }, [localuser.email]);
 
-    // Fetch user data when component mounts
+
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData]);
 
     const handlePasswordChange = async (event) => {
         event.preventDefault();
@@ -45,17 +45,15 @@ function ProfilePage() {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                old_password: user.password, // send the old password (hashed)
-                new_password: hashedNewPassword, // send the new password (already hashed)
+                old_password: user.password,
+                new_password: hashedNewPassword,
             }),
         });
 
         if (response.ok) {
-            // If update was successful, clear the password fields
             setOldPassword('');
             setNewPassword('');
 
-            // Fetch user data again
             fetchData();
 
             Swal.fire({
@@ -80,7 +78,7 @@ function ProfilePage() {
     return (
         <div>
             <Header />
-            <form onSubmit={handlePasswordChange} className="p-8 bg-bouquet shadow-md rounded-lg max-w-md mx-auto">
+            <form onSubmit={handlePasswordChange} className="p-8 bg-white shadow-md rounded-lg max-w-md mx-auto">
                 <h2 className="text-2xl font-bold mb-4 text-center">Profile</h2>
                 <label className="block">
                     <span className="text-gray-700">First Name</span>
@@ -111,7 +109,6 @@ function ProfilePage() {
                     <input type="text" value={user.role} readOnly className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"/>
                 </label>
                 <button type="submit" className="mt-6 px-4 py-2 bg-loulou text-melanie hover:bg-hopbush rounded w-full">
-
                     Change Password
                 </button>
             </form>

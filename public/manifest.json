@@ -1,16 +1,10 @@
 {
-  "short_name": "CRUD App",
-  "name": "CRUD App",
+  "short_name": "IPB Reservations",
+  "name": "IPB Reservations Desktop",
   "icons": [
     {
-      "src": "android-chrome-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "android-chrome-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "favicon.ico",
+      "type": "icon/ico"
     }
   ],
   "start_url": ".",

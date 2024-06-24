@@ -14,8 +14,6 @@ import Reservations from '../Reservations/Reservations';
 import AvailableRooms from '../AvailableRooms/AvailableRooms';
 import DashboardAdmin from '../Developer/Panel';
 import Admin from '../Admin';
-
-import ReservationPage from '../MainPage/index';
 import Background from '../Background/background';
 
 const App = () => {
@@ -23,7 +21,7 @@ const App = () => {
     const user = ActiveUser.getUser();
 
     if (isLoading) {
-        return <img src="../../loading_background.jpg" alt="Authorising..." />;
+        return <img src="/loading_background.jpg" alt="Authorising..." />;
     }
 
     return (
@@ -53,10 +51,6 @@ const App = () => {
                                     <Route path="*" element={<Navigate to="/login" />}/>
                                 </>
                             )}
-
-                            {/* Additional routes from the provided App.js structure */}
-                            <Route path="/" element={<ReservationPage />} />
-
                         </Routes>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Swal from 'sweetalert2';
-import 'tailwindcss/tailwind.css'; // Ensure correct styling import
+import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
 import ActiveUser from '../Authentication/ActiveUser';
@@ -13,6 +13,21 @@ function AvailableRooms() {
     const [rooms, setRooms] = useState([]);
     const user = ActiveUser.getUser();
     const professorId = user.professorId;
+    const [equipmentNames, setEquipmentNames] = useState({});
+
+    useEffect(() => {
+        const fetchEquipment = async () => {
+            const response = await fetch('http://localhost:8000/equipment/');
+            const data = await response.json();
+            const names = data.reduce((acc, equipment) => {
+                acc[equipment._id] = equipment.name;
+                return acc;
+            }, {});
+            setEquipmentNames(names);
+        };
+
+        fetchEquipment();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,52 +56,7 @@ function AvailableRooms() {
         fetchData();
     }, [startDate, endDate, capacity, equipment]);
 
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: 'Room',
-                accessor: 'Room',
-            },
-            {
-                Header: 'Type',
-                accessor: 'Type',
-            },
-            {
-                Header: 'School ID',
-                accessor: 'SchoolId',
-            },
-            {
-                Header: 'Capacity',
-                accessor: 'Capacity',
-            },
-            {
-                Header: 'Equipment List',
-                accessor: 'EquipmentList',
-                Cell: ({ value }) => value.join(', '),
-            },
-            {
-                Header: '',
-                id: 'reserve',
-                accessor: str => "reserve",
-                Cell: (tableProps) => (
-                    <button onClick={() => handleReserve(tableProps.row.original)} className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded">
-                        Reserve
-                    </button>
-                )
-            },
-        ],
-        []
-    );
-
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = useTable({ columns, data: rooms }, useSortBy);
-
-    const handleReserve = async (room) => {
+    const handleReserve = useCallback(async (room) => {
         Swal.fire({
             icon: 'warning',
             title: 'Are you sure?',
@@ -121,7 +91,6 @@ function AvailableRooms() {
                     });
 
                     setRooms(rooms.filter(r => r._id !== room._id));
-                    // Add logic to manage reservations state if needed
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -132,12 +101,57 @@ function AvailableRooms() {
                 }
             }
         });
-    };
+    }, [startDate, endDate, professorId, rooms]);
+
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: 'Room',
+                accessor: 'Room',
+            },
+            {
+                Header: 'Type',
+                accessor: 'Type',
+            },
+            {
+                Header: 'School ID',
+                accessor: 'SchoolId',
+            },
+            {
+                Header: 'Capacity',
+                accessor: 'Capacity',
+            },
+            {
+                Header: 'Equipment List',
+                accessor: 'EquipmentList',
+                Cell: ({ value }) => value.map(id => equipmentNames[id]).join(', '),
+            },
+            {
+                Header: '',
+                id: 'reserve',
+                accessor: str => "reserve",
+                Cell: (tableProps) => (
+                    <button onClick={() => handleReserve(tableProps.row.original)} className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded">
+                        Reserve
+                    </button>
+                )
+            },
+        ],
+        [equipmentNames, handleReserve]
+    );
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+    } = useTable({ columns, data: rooms }, useSortBy);
 
     return (
         <div>
             <Header />
-            <div className="container mx-auto px-4 bg-gray-200 text-black">
+            <div className="container mx-auto px-4 bg-gray-200 text-black max-w-screen-lg">
                 <h2 className="text-2xl font-bold mb-4 text-center">Available Rooms</h2>
                 <table {...getTableProps()} className="w-full text-left border-collapse">
                     <thead>

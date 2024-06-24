@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import '../../../index.css'; // Ensure correct styling import
+import '../../../index.css';
 import { Link } from 'react-router-dom';
 
 import Header from './Header';

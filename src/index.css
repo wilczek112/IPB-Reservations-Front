@@ -14,7 +14,7 @@
 
 /* Custom background */
 .bg-checkerboard {
-  background-image: url('./logo_ipb.png');
+  background-image: url('../public/logo_ipb.png');
   background-size: 200px 200px; /* Adjust size to make the pattern */
   background-repeat: repeat;
 }

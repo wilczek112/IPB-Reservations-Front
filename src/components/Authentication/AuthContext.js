@@ -4,10 +4,8 @@ import Cookies from 'js-cookie';
 import Swal from "sweetalert2";
 
 
-// Create the context
 export const AuthContext = createContext();
 
-// Create a provider component
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
     const [isLoading, setIsLoading] = useState(true); // Add this line

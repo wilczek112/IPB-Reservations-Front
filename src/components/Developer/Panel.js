@@ -11,7 +11,7 @@ const MainPage = () => {
             </header>
             <h1 className="text-tapestry text-2xl mb-4">Welcome to developer panel</h1>
             <nav>
-                <ul className="space-y-6"> {/* Zmieniono space-y-4 na space-y-6 */}
+                <ul className="space-y-6">
                     <li>
                         <Link
                             to="/developer/reservations"
