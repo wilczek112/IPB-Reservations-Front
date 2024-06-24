@@ -5,7 +5,7 @@ import { AuthContext } from '../Authentication/AuthContext';
 import ActiveUser from "../Authentication/ActiveUser";
 
 const Logout = () => {
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { setIsAuthenticated, user } = useContext(AuthContext);
 
   const handleLogout = () => {
     Swal.fire({
@@ -27,7 +27,9 @@ const Logout = () => {
           willClose: () => {
             localStorage.setItem('is_authenticated', false);
             setIsAuthenticated(false);
-            ActiveUser.clearUser();
+            if (user !== null) {
+              ActiveUser.clearUser();
+            }
             window.location.reload();
           },
         });
