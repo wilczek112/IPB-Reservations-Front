@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import 'tailwindcss/tailwind.css';
+import Swal from 'sweetalert2';
+import 'tailwindcss/tailwind.css'; // Ensure correct styling import
 import Header from '../Header/Header';
 import '../../index.css';
-import Swal from 'sweetalert2';
-import { useLocation } from 'react-router-dom';
 import ActiveUser from '../Authentication/ActiveUser';
+import { useLocation } from 'react-router-dom';
 import { useTable, useSortBy } from 'react-table';
 
 function AvailableRooms() {
     const location = useLocation();
     const { startDate, endDate, capacity, equipment } = location.state || {};
     const [rooms, setRooms] = useState([]);
-    const [reservations, setReservations] = useState([]);
-
     const user = ActiveUser.getUser();
     const professorId = user.professorId;
 
@@ -41,7 +39,7 @@ function AvailableRooms() {
             setRooms(availableRooms);
         };
         fetchData();
-    }, [startDate, endDate, capacity, equipment, reservations]);
+    }, [startDate, endDate, capacity, equipment]);
 
     const columns = React.useMemo(
         () => [
@@ -71,7 +69,7 @@ function AvailableRooms() {
                 id: 'reserve',
                 accessor: str => "reserve",
                 Cell: (tableProps) => (
-                    <button onClick={() => handleReserve(tableProps.row.original)} className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105">
+                    <button onClick={() => handleReserve(tableProps.row.original)} className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded">
                         Reserve
                     </button>
                 )
@@ -87,7 +85,6 @@ function AvailableRooms() {
         rows,
         prepareRow,
     } = useTable({ columns, data: rooms }, useSortBy);
-
 
     const handleReserve = async (room) => {
         Swal.fire({
@@ -124,7 +121,7 @@ function AvailableRooms() {
                     });
 
                     setRooms(rooms.filter(r => r._id !== room._id));
-                    setReservations([...reservations, newReservation]);
+                    // Add logic to manage reservations state if needed
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -137,12 +134,10 @@ function AvailableRooms() {
         });
     };
 
-
-
     return (
         <div>
             <Header />
-            <div className="p-8 bg-white shadow-md rounded-lg max-w-full mx-auto"> {/* Change max-w-2xl to max-w-full */}
+            <div className="container mx-auto px-4 bg-gray-200 text-black">
                 <h2 className="text-2xl font-bold mb-4 text-center">Available Rooms</h2>
                 <table {...getTableProps()} className="w-full text-left border-collapse">
                     <thead>
@@ -155,12 +150,12 @@ function AvailableRooms() {
                                 >
                                     {column.render('Header')}
                                     <span>
-                                    {column.isSorted
-                                        ? column.isSortedDesc
-                                            ? ' 🔽'
-                                            : ' 🔼'
-                                        : ''}
-                                </span>
+                                            {column.isSorted
+                                                ? column.isSortedDesc
+                                                    ? ' 🔽'
+                                                    : ' 🔼'
+                                                : ''}
+                                        </span>
                                 </th>
                             ))}
                         </tr>

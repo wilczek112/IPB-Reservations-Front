@@ -8,12 +8,12 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
   const [type, setType] = useState(selectedRoom.Type);
   const [schoolId, setSchoolId] = useState(selectedRoom.SchoolId);
   const [capacity, setCapacity] = useState(selectedRoom.Capacity);
-  const [equipmentList, setEquipmentList] = useState(selectedRoom.EquipmentList);
+  const [equipmentList, setEquipmentList] = useState(selectedRoom.EquipmentList.join(','));
 
-  const handleUpdate = async e => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
-    if (!room || !type || !schoolId || !capacity || !equipmentList) {
+    if (!room || !type || !schoolId || !capacity || !equipmentList.length) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -27,7 +27,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
       Type: type,
       SchoolId: schoolId,
       Capacity: capacity,
-      EquipmentList: equipmentList,
+      EquipmentList: equipmentList.split(','),
     };
 
     const response = await fetch(`http://localhost:8000/room/${id}`, {
@@ -38,7 +38,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
 
     if (response.ok) {
       setIsEditing(false);
-      setRefreshData(prevState => !prevState);
+      setRefreshData((prevState) => !prevState);
       Swal.fire({
         icon: 'success',
         title: 'Updated!',
@@ -66,8 +66,8 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               type="text"
               name="room"
               value={room}
-              onChange={e => setRoom(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setRoom(e.target.value)}
+              className="input-field"
           />
           <label htmlFor="type">Type</label>
           <input
@@ -75,8 +75,8 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               type="text"
               name="type"
               value={type}
-              onChange={e => setType(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setType(e.target.value)}
+              className="input-field"
           />
           <label htmlFor="schoolId">School ID</label>
           <input
@@ -84,8 +84,8 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               type="text"
               name="schoolId"
               value={schoolId}
-              onChange={e => setSchoolId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setSchoolId(e.target.value)}
+              className="input-field"
           />
           <label htmlFor="capacity">Capacity</label>
           <input
@@ -93,26 +93,26 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
               type="text"
               name="capacity"
               value={capacity}
-              onChange={e => setCapacity(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setCapacity(e.target.value)}
+              className="input-field"
           />
-          <label htmlFor="equipmentList">Equipment List</label>
+          <label htmlFor="equipmentList">Equipment List (comma-separated)</label>
           <input
               id="equipmentList"
               type="text"
               name="equipmentList"
               value={equipmentList}
-              onChange={e => setEquipmentList(e.target.value.split(','))}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setEquipmentList(e.target.value)}
+              className="input-field"
           />
           <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Update" />
+            <input type="submit" value="Update" className="btn-primary" />
             <input
                 style={{ marginLeft: '12px' }}
-                className="muted-button"
                 type="button"
                 value="Cancel"
                 onClick={() => setIsEditing(false)}
+                className="btn-secondary"
             />
           </div>
         </form>

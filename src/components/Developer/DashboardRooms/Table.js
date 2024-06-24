@@ -28,18 +28,12 @@ const Table = ({ rooms, handleEdit, handleDelete }) => {
                     <td>{room.Capacity}</td>
                     <td>{room.EquipmentList.join(', ')}</td>
                     <td className="text-right">
-                      <button
-                          onClick={() => handleEdit(room._id)}
-                          className="button muted-button"
-                      >
+                      <button onClick={() => handleEdit(room._id)} className="button muted-button">
                         Edit
                       </button>
                     </td>
                     <td className="text-left">
-                      <button
-                          onClick={() => handleDelete(room._id)}
-                          className="button muted-button"
-                      >
+                      <button onClick={() => handleDelete(room._id)} className="button muted-button">
                         Delete
                       </button>
                     </td>
@@ -47,7 +41,7 @@ const Table = ({ rooms, handleEdit, handleDelete }) => {
               ))
           ) : (
               <tr>
-                <td colSpan={8}>No Rooms</td>
+                <td colSpan={7}>No Rooms</td>
               </tr>
           )}
           </tbody>

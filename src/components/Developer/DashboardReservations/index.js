@@ -69,8 +69,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
   };
 
   return (
-      <div className="container mx-auto px-4 bg-blue-500 text-white">
-        <Link to="/developer" className="bg-white text-blue-500 hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
+      <div className="container mx-auto px-4 bg-gray-200 text-black">
+        <Link to="/developer" className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded mb-4 inline-block">
           Back to developer panel
         </Link>
         {!isAdding && !isEditing && (

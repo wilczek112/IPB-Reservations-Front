@@ -1,18 +1,20 @@
-import React, { useEffect, useState, useContext } from 'react';
-import 'tailwindcss/tailwind.css';
+// index.js
+
+import React, { useEffect, useState } from 'react';
+import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
 import Header from '../Header/Header';
-import '../../index.css';
 import { useNavigate } from 'react-router-dom';
 import ActiveUser from '../Authentication/ActiveUser';
+import Background from '../Background/background';
 
-function ReservationPage() {
+function ReservationPage({ setIsAuthenticated }) {
     const navigate = useNavigate();
     const now = new Date();
     now.setMinutes(0, 0, 0);
     const repaire_time = new Date(now.getTime() + 2 * 60 * 60 * 1000);
     const twoHoursLater = new Date(repaire_time.getTime() + 2 * 60 * 60 * 1000);
-    const [startDate, setStartDate] = useState(repaire_time.toISOString().substring(0,16));
-    const [endDate, setEndDate] = useState(twoHoursLater.toISOString().substring(0,16));
+    const [startDate, setStartDate] = useState(repaire_time.toISOString().substring(0, 16));
+    const [endDate, setEndDate] = useState(twoHoursLater.toISOString().substring(0, 16));
     const [capacity, setCapacity] = useState(30);
     const [equipmentList, setEquipmentList] = useState([]);
     const [filters, setFilters] = useState({});
@@ -25,7 +27,7 @@ function ReservationPage() {
             .then(data => {
                 setEquipmentList(data);
                 const initialFilters = data.reduce((acc, equipment) => {
-                    acc[equipment._id] = false; // Use equipment._id instead of equipment.name
+                    acc[equipment._id] = false;
                     return acc;
                 }, {});
                 setFilters(initialFilters);
@@ -36,12 +38,13 @@ function ReservationPage() {
     useEffect(() => {
         const start = new Date(startDate);
         const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
-        setEndDate(end.toISOString().substring(0,16));
+        setEndDate(end.toISOString().substring(0, 16));
     }, [startDate]);
 
     const handleStartDateChange = (event) => {
         setStartDate(event.target.value);
     };
+
     const handleEndDateChange = (event) => {
         setEndDate(event.target.value);
     };
@@ -57,44 +60,71 @@ function ReservationPage() {
     };
 
     return (
-        <div>
-            <Header />
-            <form onSubmit={handleSubmit} className="p-8 bg-white shadow-md rounded-lg max-w-md mx-auto space-y-4">
-                <h2 className="text-2xl font-bold mb-4 text-center">Classroom search</h2>
-                <div className="grid grid-cols-2 gap-4">
-                    <label className="flex flex-col space-y-1">
-                        <span className="text-gray-700">Start Date</span>
-                        <input type="datetime-local" value={startDate} onChange={handleStartDateChange}
-                               className="p-2 border rounded"/>
-                    </label>
-                    <label className="flex flex-col space-y-1">
-                        <span className="text-gray-700">End Date</span>
-                        <input type="datetime-local" value={endDate} onChange={handleEndDateChange}
-                               className="p-2 border rounded"/>
-                    </label>
-                    <label className="flex flex-col space-y-1 col-span-2">
-                        <span className="text-gray-700">Capacity</span>
-                        <input type="number" value={capacity} onChange={(e) => setCapacity(e.target.value)} min="1"
-                               className="p-2 border rounded w-full max-w-xs"/>
-                    </label>
-                </div>
-                <fieldset className="mt-6">
-                    <legend className="text-lg font-medium mb-2">Filters</legend>
+        <div className="relative min-h-screen">
+            <Background />
+            <div className="relative z-10">
+                <Header setIsAuthenticated={setIsAuthenticated} />
+
+                <form onSubmit={handleSubmit} className="relative p-4 bg-bouquet shadow-md rounded-lg max-w-xl mx-auto space-y-6 mt-8 z-10">
+                    <h2 className="text-2xl font-bold mb-4 text-center text-white">Classroom search</h2>
                     <div className="grid grid-cols-2 gap-4">
-                        {equipmentList.map((equipment) => (
-                            <label key={equipment._id} className="flex items-center">
-                                <input type="checkbox" name={equipment._id} checked={filters[equipment._id]}
-                                       onChange={handleFilterChange} className="mr-2"/>
-                                {equipment.name.charAt(0).toUpperCase() + equipment.name.slice(1)}
-                            </label>
-                        ))}
+                        <label className="flex flex-col space-y-1">
+                            <span className="text-white">Start Date</span>
+                            <input
+                                type="datetime-local"
+                                value={startDate}
+                                onChange={handleStartDateChange}
+                                className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-tapestry"
+                                style={{ '--ring-color': 'var(--tapestry)' }}
+                            />
+                        </label>
+                        <label className="flex flex-col space-y-1">
+                            <span className="text-white">End Date</span>
+                            <input
+                                type="datetime-local"
+                                value={endDate}
+                                onChange={handleEndDateChange}
+                                className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-tapestry"
+                                style={{ '--ring-color': 'var(--tapestry)' }}
+                            />
+                        </label>
+                        <label className="flex flex-col space-y-1 col-span-2">
+                            <span className="text-white mx-auto">Capacity</span>
+                            <input
+                                type="number"
+                                value={capacity}
+                                onChange={(e) => setCapacity(e.target.value)}
+                                min="1"
+                                className="p-2 border rounded w-full w-32 mx-auto focus:outline-none focus:ring-2 focus:ring-tapestry"
+                                style={{ '--ring-color': 'var(--tapestry)' }}
+                            />
+                        </label>
                     </div>
-                </fieldset>
-                <button type="submit" onClick={handleSubmit}
-                        className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                    Search
-                </button>
-            </form>
+                    <fieldset className="mt-6">
+                        <legend className="text-lg font-medium mb-2 text-white">Filters</legend>
+                        <div className="grid grid-cols-2 gap-4">
+                            {equipmentList.map((equipment) => (
+                                <label key={equipment._id} className="flex items-center space-x-2">
+                                    <input
+                                        type="checkbox"
+                                        name={equipment._id}
+                                        checked={filters[equipment._id]}
+                                        onChange={handleFilterChange}
+                                        className="form-checkbox h-5 w-5 text-tapestry focus:outline-none"
+                                    />
+                                    <span className="text-white">{equipment.name}</span>
+                                </label>
+                            ))}
+                        </div>
+                    </fieldset>
+                    <button
+                        type="submit"
+                        className="w-full bg-loulou text-white p-2 rounded hover:bg-tapestry focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tapestry"
+                    >
+                        Search
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }

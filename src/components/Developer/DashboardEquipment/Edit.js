@@ -7,7 +7,7 @@ const Edit = ({ selectedEquipment, setIsEditing, setRefreshData }) => {
   const [name, setName] = useState(selectedEquipment.name);
   const [iconId, setIconId] = useState(selectedEquipment.iconId);
 
-  const handleUpdate = async e => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
     if (!name || !iconId) {
@@ -32,7 +32,7 @@ const Edit = ({ selectedEquipment, setIsEditing, setRefreshData }) => {
 
     if (response.ok) {
       setIsEditing(false);
-      setRefreshData(prevState => !prevState);
+      setRefreshData((prevState) => !prevState);
       Swal.fire({
         icon: 'success',
         title: 'Updated!',
@@ -60,8 +60,8 @@ const Edit = ({ selectedEquipment, setIsEditing, setRefreshData }) => {
               type="text"
               name="name"
               value={name}
-              onChange={e => setName(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setName(e.target.value)}
+              style={{ color: 'black' }}
           />
           <label htmlFor="iconId">Icon ID</label>
           <input
@@ -69,11 +69,15 @@ const Edit = ({ selectedEquipment, setIsEditing, setRefreshData }) => {
               type="text"
               name="iconId"
               value={iconId}
-              onChange={e => setIconId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setIconId(e.target.value)}
+              style={{ color: 'black' }}
           />
           <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Update" />
+            <input
+                type="submit"
+                value="Update"
+                className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded"
+            />
             <input
                 style={{ marginLeft: '12px' }}
                 className="muted-button"
