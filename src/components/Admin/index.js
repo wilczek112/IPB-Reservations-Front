@@ -88,7 +88,7 @@ function AdminReservations() {
     return (
         <div>
             <Header />
-            <div className="p-8 bg-bouquet shadow-md rounded-lg max-w-md mx-auto">
+            <div className="p-8 bg-bouquet shadow-md rounded-lg max-w-screen-sm mx-auto">
                 <h2 className="text-2xl font-bold mb-4 text-center text-white">Admin Reservations</h2>
                 <div className="flex justify-center mb-4">
                     <button onClick={() => setTab('pending')} className={`px-4 py-2 rounded ${tab === 'pending' ? 'bg-loulou text-white' : 'bg-white text-loulou border-loulou'}`}>Pending ({pendingReservations.length})</button>
@@ -103,6 +103,7 @@ function AdminReservations() {
                                 <p>Start Time: {formatTimestamp(reservation.StartTime)}</p>
                                 <p>End Time: {formatTimestamp(reservation.EndTime)}</p>
                                 <p>Status: {reservation.Status}</p>
+                                <p>Professor ID: {reservation.ProfessorId}</p> {/* Add this line */}
                                 <div className="flex justify-between">
                                     <button onClick={() => handleAction(reservation._id, 'approve')} className="mt-2 px-4 py-2 rounded bg-green-500 text-white hover:bg-green-700">Approve Reservation</button>
                                     <button onClick={() => handleAction(reservation._id, 'cancel')} className="mt-2 px-4 py-2 rounded bg-red-500 text-white hover:bg-red-700">Cancel Reservation</button>
