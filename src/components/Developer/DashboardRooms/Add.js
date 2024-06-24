@@ -8,10 +8,10 @@ const Add = ({ setIsAdding, setRefreshData }) => {
   const [capacity, setCapacity] = useState('');
   const [equipmentList, setEquipmentList] = useState([]);
 
-  const handleAdd = async e => {
+  const handleAdd = async (e) => {
     e.preventDefault();
 
-    if (!room || !type || !schoolId || !capacity || !equipmentList) {
+    if (!room || !type || !schoolId || !capacity || !equipmentList.length) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -36,7 +36,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
 
     if (response.ok) {
       setIsAdding(false);
-      setRefreshData(prevState => !prevState);
+      setRefreshData((prevState) => !prevState);
       Swal.fire({
         icon: 'success',
         title: 'Added!',
@@ -64,8 +64,8 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               type="text"
               name="room"
               value={room}
-              onChange={e => setRoom(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setRoom(e.target.value)}
+              className="input-field"
           />
           <label htmlFor="type">Type</label>
           <input
@@ -73,8 +73,8 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               type="text"
               name="type"
               value={type}
-              onChange={e => setType(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setType(e.target.value)}
+              className="input-field"
           />
           <label htmlFor="schoolId">School ID</label>
           <input
@@ -82,8 +82,8 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               type="text"
               name="schoolId"
               value={schoolId}
-              onChange={e => setSchoolId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setSchoolId(e.target.value)}
+              className="input-field"
           />
           <label htmlFor="capacity">Capacity</label>
           <input
@@ -91,26 +91,26 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               type="text"
               name="capacity"
               value={capacity}
-              onChange={e => setCapacity(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setCapacity(e.target.value)}
+              className="input-field"
           />
-          <label htmlFor="equipmentList">Equipment List</label>
+          <label htmlFor="equipmentList">Equipment List (comma-separated)</label>
           <input
               id="equipmentList"
               type="text"
               name="equipmentList"
               value={equipmentList}
-              onChange={e => setEquipmentList(e.target.value.split(','))}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setEquipmentList(e.target.value.split(','))}
+              className="input-field"
           />
           <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Add" />
+            <input type="submit" value="Add" className="btn-primary" />
             <input
                 style={{ marginLeft: '12px' }}
-                className="muted-button"
                 type="button"
                 value="Cancel"
                 onClick={() => setIsAdding(false)}
+                className="btn-secondary"
             />
           </div>
         </form>

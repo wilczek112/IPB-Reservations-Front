@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c61f2a98-5756-4277-9ccb-888d19bb012f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Background/background.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loading_background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/Panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reservations/Reservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reservations/Reservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/App/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/MainPage/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Reservations/Reservations.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2iFVO73L5eNTuA7DQtQcXCsS9sv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.index.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "jakub",
+    "last_opened_file_path": "C:/Users/Dell 5520/WebstormProjects/Front-T5-jakub/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell 5520\WebstormProjects\Front-T5-jakub\src" />
+      <recent name="C:\Users\Dell 5520\WebstormProjects\Front-T5-jakub\src\components\MainPage" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell 5520\WebstormProjects\Front-T5-jakub\src" />
+      <recent name="C:\Users\Dell 5520\WebstormProjects\Front-T5-jakub\public" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c61f2a98-5756-4277-9ccb-888d19bb012f" name="Changes" comment="" />
+      <created>1719086276219</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719086276219</updated>
+      <workItem from="1719086277348" duration="4521000" />
+      <workItem from="1719091354153" duration="7955000" />
+      <workItem from="1719230430125" duration="4640000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

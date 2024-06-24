@@ -9,7 +9,6 @@ const Add = ({ setIsAdding, setRefreshData }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
   const handleAdd = async e => {
     e.preventDefault();
 
@@ -22,7 +21,6 @@ const Add = ({ setIsAdding, setRefreshData }) => {
       });
     }
 
-    // Hash the password
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
@@ -31,7 +29,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
       surname: surname,
       role: role,
       email: email,
-      password: hashedPassword,  // Store the hashed password
+      password: hashedPassword,
     };
 
     const response = await fetch('http://localhost:8000/user', {
@@ -63,7 +61,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
   return (
       <div className="small-container">
         <form onSubmit={handleAdd}>
-          <h1>Add User</h1>
+          <h1 className="text-2xl font-bold mb-4">Add User</h1>
           <label htmlFor="name">Name</label>
           <input
               id="name"
@@ -71,7 +69,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="name"
               value={name}
               onChange={e => setName(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="surname">Surname</label>
           <input
@@ -80,7 +78,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="surname"
               value={surname}
               onChange={e => setSurname(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="role">Role</label>
           <input
@@ -89,7 +87,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="role"
               value={role}
               onChange={e => setRole(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="email">Email</label>
           <input
@@ -98,7 +96,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="password">Password</label>
           <input
@@ -107,10 +105,10 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               name="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Add" />
+            <input type="submit" value="Add" className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded" />
             <input
                 style={{ marginLeft: '12px' }}
                 className="muted-button"

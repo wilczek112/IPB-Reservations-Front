@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const Add = ({ setIsAdding, setRefreshData }) => {
+const Add = ({ setEquipments, setIsAdding, setRefreshData }) => {
   const [name, setName] = useState('');
   const [iconId, setIconId] = useState('');
 
-  const handleAdd = async e => {
+  const handleAdd = async (e) => {
     e.preventDefault();
 
     if (!name || !iconId) {
@@ -30,7 +30,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
 
     if (response.ok) {
       setIsAdding(false);
-      setRefreshData(prevState => !prevState);
+      setRefreshData((prevState) => !prevState);
       Swal.fire({
         icon: 'success',
         title: 'Added!',
@@ -58,8 +58,8 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               type="text"
               name="name"
               value={name}
-              onChange={e => setName(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setName(e.target.value)}
+              style={{ color: 'black' }}
           />
           <label htmlFor="iconId">Icon ID</label>
           <input
@@ -67,11 +67,15 @@ const Add = ({ setIsAdding, setRefreshData }) => {
               type="text"
               name="iconId"
               value={iconId}
-              onChange={e => setIconId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              onChange={(e) => setIconId(e.target.value)}
+              style={{ color: 'black' }}
           />
           <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Add" />
+            <input
+                type="submit"
+                value="Add"
+                className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded"
+            />
             <input
                 style={{ marginLeft: '12px' }}
                 className="muted-button"

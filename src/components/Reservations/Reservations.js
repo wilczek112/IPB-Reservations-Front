@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
@@ -86,22 +86,20 @@ function Reservations() {
         });
     };
 
-
-
     return (
         <div>
             <Header />
-            <div className="p-8 bg-white shadow-md rounded-lg max-w-md mx-auto">
-                <h2 className="text-2xl font-bold mb-4 text-center">Reservations</h2>
+            <div className="p-8 bg-bouquet shadow-md rounded-lg max-w-md mx-auto">
+                <h2 className="text-2xl font-bold mb-4 text-center text-white">Reservations</h2>
                 <div className="flex justify-center mb-4">
-                    <button onClick={() => setTab('current')} className={`px-4 py-2 rounded ${tab === 'current' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'}`}>Current ({currentReservations.length})</button>
-                    <button onClick={() => setTab('previous')} className={`px-4 py-2 rounded ${tab === 'previous' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'}`}>Previous ({previousReservations.length})</button>
+                    <button onClick={() => setTab('current')} className={`px-4 py-2 rounded ${tab === 'current' ? 'bg-loulou text-white' : 'bg-white text-loulou'}`}>Current ({currentReservations.length})</button>
+                    <button onClick={() => setTab('previous')} className={`px-4 py-2 rounded ${tab === 'previous' ? 'bg-loulou text-white' : 'bg-white text-loulou'}`}>Previous ({previousReservations.length})</button>
                 </div>
                 {tab === 'current' ? (
                     <div>
-                        <h3 className="text-lg font-medium mb-2">Current Reservations</h3>
+                        <h3 className="text-lg font-medium mb-2 text-white">Current Reservations</h3>
                         {currentReservations.map((reservation, index) => (
-                            <div key={index} className={`p-4 border-2 rounded mb-4 ${getStatusColor(reservation.Status)}`}>
+                            <div key={index} className={`p-4 border-2 border-solid rounded-lg font-semibold mb-4 ${getStatusColor(reservation.Status)}`}>
                                 <h4 className="font-bold">Room {reservation.RoomId}</h4>
                                 <p>Start Time: {formatTimestamp(reservation.StartTime)}</p>
                                 <p>End Time: {formatTimestamp(reservation.EndTime)}</p>
@@ -112,9 +110,9 @@ function Reservations() {
                     </div>
                 ) : (
                     <div>
-                        <h3 className="text-lg font-medium mb-2">Previous Reservations</h3>
+                        <h3 className="text-lg font-medium mb-2 text-white">Previous Reservations</h3>
                         {previousReservations.map((reservation, index) => (
-                            <div key={index} className={`p-4 border-2 rounded mb-4 ${getStatusColor(reservation.Status)}`}>
+                            <div key={index} className={`p-4 border-2 border-solid rounded-lg font-semibold mb-4 ${getStatusColor(reservation.Status)}`}>
                                 <h4 className="font-bold">Room {reservation.RoomId}</h4>
                                 <p>Start Time: {formatTimestamp(reservation.StartTime)}</p>
                                 <p>End Time: {formatTimestamp(reservation.EndTime)}</p>

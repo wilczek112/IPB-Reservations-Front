@@ -2,8 +2,8 @@ import React from 'react';
 
 const Table = ({ reservations, handleEdit, handleDelete }) => {
   return (
-      <div className="contain-table">
-        <table className="striped-table">
+      <div className="contain-table" style={{ overflowX: 'auto' }}>
+        <table className="striped-table" style={{ width: '100%', margin: '0 auto', borderCollapse: 'separate', borderSpacing: '0 10px' }}>
           <thead>
           <tr>
             <th>No.</th>

@@ -11,7 +11,6 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
   const [email, setEmail] = useState(selectedUser.email);
   const [password, setPassword] = useState(selectedUser.password);
 
-
   const handleUpdate = async e => {
     e.preventDefault();
 
@@ -24,7 +23,6 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
       });
     }
 
-    // Hash the password
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
@@ -33,7 +31,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
       surname: surname,
       role: role,
       email: email,
-      password: hashedPassword,  // Store the hashed password
+      password: hashedPassword,
     };
 
     const response = await fetch(`http://localhost:8000/user/${id}`, {
@@ -62,11 +60,10 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
     }
   };
 
-
   return (
       <div className="small-container">
         <form onSubmit={handleUpdate}>
-          <h1>Edit User</h1>
+          <h1 className="text-2xl font-bold mb-4">Edit User</h1>
           <label htmlFor="name">Name</label>
           <input
               id="name"
@@ -74,7 +71,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
               name="name"
               value={name}
               onChange={e => setName(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="surname">Surname</label>
           <input
@@ -83,7 +80,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
               name="surname"
               value={surname}
               onChange={e => setSurname(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="role">Role</label>
           <input
@@ -92,7 +89,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
               name="role"
               value={role}
               onChange={e => setRole(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="email">Email</label>
           <input
@@ -101,7 +98,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <label htmlFor="password">Password</label>
           <input
@@ -110,10 +107,10 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
               name="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              style={{ color: 'black' }}
           />
           <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Update" />
+            <input type="submit" value="Update" className="bg-loulou text-melanie hover:bg-hopbush hover:text-white font-bold py-2 px-4 rounded" />
             <input
                 style={{ marginLeft: '12px' }}
                 className="muted-button"

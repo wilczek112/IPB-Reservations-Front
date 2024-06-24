@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import 'tailwindcss/tailwind.css';
+import '../../../index.css';
 
 const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => {
   const id = selectedReservation._id;
@@ -61,69 +63,68 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => {
   return (
       <div className="small-container">
         <form onSubmit={handleUpdate}>
-          <h1>Edit Reservation</h1>
-          <label htmlFor="startTime">Start Time</label>
+          <h1 className="text-loulou">Edit Reservation</h1>
+          <label htmlFor="startTime" className="text-tapestry">Start Time</label>
           <input
               id="startTime"
               type="time"
               name="startTime"
               value={startTime}
               onChange={e => setStartTime(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              className="text-black"
           />
-          <label htmlFor="endTime">End Time</label>
+          <label htmlFor="endTime" className="text-tapestry">End Time</label>
           <input
               id="endTime"
               type="time"
               name="endTime"
               value={endTime}
               onChange={e => setEndTime(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              className="text-black"
           />
-          <label htmlFor="roomId">Room ID</label>
+          <label htmlFor="roomId" className="text-tapestry">Room ID</label>
           <input
               id="roomId"
               type="text"
               name="roomId"
               value={roomId}
               onChange={e => setRoomId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              className="text-black"
           />
-          <label htmlFor="professorId">Professor ID</label>
+          <label htmlFor="professorId" className="text-tapestry">Professor ID</label>
           <input
               id="professorId"
               type="text"
               name="professorId"
               value={professorId}
               onChange={e => setProfessorId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              className="text-black"
           />
-          <label htmlFor="status">Status</label>
+          <label htmlFor="status" className="text-tapestry">Status</label>
           <input
               id="status"
               type="text"
               name="status"
               value={status}
               onChange={e => setStatus(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              className="text-black"
           />
-          <label htmlFor="schoolId">School ID</label>
+          <label htmlFor="schoolId" className="text-tapestry">School ID</label>
           <input
               id="schoolId"
               type="text"
               name="schoolId"
               value={schoolId}
               onChange={e => setSchoolId(e.target.value)}
-              style={{ color: 'black' }} // Dodane style
+              className="text-black"
           />
-          <div style={{ marginTop: '30px' }}>
-            <input type="submit" value="Update" />
+          <div className="mt-6">
+            <input type="submit" value="Update" className="bg-loulou text-melanie hover:bg-hopbush hover:text-white py-2 px-4 rounded-full" />
             <input
-                style={{ marginLeft: '12px' }}
-                className="muted-button"
                 type="button"
                 value="Cancel"
                 onClick={() => setIsEditing(false)}
+                className="bg-gray-400 text-white ml-4 py-2 px-4 rounded-full"
             />
           </div>
         </form>
