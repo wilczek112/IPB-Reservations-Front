@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from "sweetalert2";
+import API_URL from "../../api_config";
 
 
 export const AuthContext = createContext();
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }) => {
                     },
                 });
 
-                const response = await axios.get('http://localhost:8000/user/check-token', {
+                const response = await axios.get(`${API_URL}/user/check-token`, {
                     headers: { Authorization: `Bearer ${Cookies.get('token')}` }
                 });
 

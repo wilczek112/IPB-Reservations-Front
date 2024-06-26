@@ -4,12 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c61f2a98-5756-4277-9ccb-888d19bb012f" name="Changes" comment="App prepared for production. Updated files, descriptions and version.">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="c61f2a98-5756-4277-9ccb-888d19bb012f" name="Changes" comment="App just get docker support.">
+      <change afterPath="$PROJECT_DIR$/src/api_config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AvailableRooms/AvailableRooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AvailableRooms/AvailableRooms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardEquipment/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardReservations/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardRooms/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Add.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Add.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/Edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Developer/DashboardUsers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reservations/Reservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reservations/Reservations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +97,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -96,7 +114,7 @@
       <recent name="C:\Users\Dell 5520\WebstormProjects\Front-T5-jakub\public" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+  <component name="RunManager" selected="npm.start">
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -126,8 +144,19 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.Dockerfile" />
       </list>
@@ -154,6 +183,9 @@
       <workItem from="1719237813421" duration="3099000" />
       <workItem from="1719260538864" duration="2079000" />
       <workItem from="1719406677458" duration="2047000" />
+      <workItem from="1719409057284" duration="429000" />
+      <workItem from="1719423973412" duration="340000" />
+      <workItem from="1719426202084" duration="1337000" />
     </task>
     <task id="LOCAL-00001" summary="CSS update v1">
       <option name="closed" value="true" />
@@ -195,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719252816036</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="App just get docker support.">
+      <option name="closed" value="true" />
+      <created>1719409331957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719409331957</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +256,7 @@
     <MESSAGE value="CSS update v1" />
     <MESSAGE value="CSS update v2" />
     <MESSAGE value="App prepared for production. Updated files, descriptions and version." />
-    <option name="LAST_COMMIT_MESSAGE" value="App prepared for production. Updated files, descriptions and version." />
+    <MESSAGE value="App just get docker support." />
+    <option name="LAST_COMMIT_MESSAGE" value="App just get docker support." />
   </component>
 </project>

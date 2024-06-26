@@ -8,6 +8,7 @@ import Header from './Header';
 import Table from './Table';
 import Add from './Add';
 import Edit from './Edit';
+import API_URL from "../../../api_config";
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [reservations, setReservations] = useState([]);
@@ -18,7 +19,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/reservation/');
+      const response = await fetch(`${API_URL}/reservation/`);
       const data = await response.json();
       setReservations(data);
     };
@@ -42,7 +43,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(async result => {
       if (result.value) {
-        const response = await fetch(`http://localhost:8000/reservation/${id}`, {
+        const response = await fetch(`${API_URL}/reservation/${id}`, {
           method: 'DELETE',
         });
 

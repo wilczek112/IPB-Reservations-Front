@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
 import '../../../index.css';
+import API_URL from "../../../api_config";
 
 const Add = ({ setIsAdding, setRefreshData }) => {
   const [startTime, setStartTime] = useState('');
@@ -32,7 +33,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
       SchoolId: schoolId,
     };
 
-    const response = await fetch('http://localhost:8000/reservation', {
+    const response = await fetch(`${API_URL}/reservation`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newReservation),

@@ -6,6 +6,7 @@ import '../../index.css';
 import ActiveUser from '../Authentication/ActiveUser';
 import { useLocation } from 'react-router-dom';
 import { useTable, useSortBy } from 'react-table';
+import API_URL from "../../api_config";
 
 function AvailableRooms() {
     const location = useLocation();
@@ -17,7 +18,7 @@ function AvailableRooms() {
 
     useEffect(() => {
         const fetchEquipment = async () => {
-            const response = await fetch('http://localhost:8000/equipment/');
+            const response = await fetch(`${API_URL}/equipment/`);
             const data = await response.json();
             const names = data.reduce((acc, equipment) => {
                 acc[equipment._id] = equipment.name;
@@ -31,8 +32,8 @@ function AvailableRooms() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const roomResponse = await fetch('http://localhost:8000/room');
-            const reservationResponse = await fetch('http://localhost:8000/reservation');
+            const roomResponse = await fetch(`${API_URL}/room`);
+            const reservationResponse = await fetch(`${API_URL}/reservation`);
             const roomData = await roomResponse.json();
             const reservationData = await reservationResponse.json();
 
@@ -75,7 +76,7 @@ function AvailableRooms() {
                     SchoolId: room.SchoolId,
                 };
 
-                const response = await fetch('http://localhost:8000/reservation', {
+                const response = await fetch(`${API_URL}/reservation`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newReservation),

@@ -6,6 +6,7 @@ import Header from './Header';
 import Table from './Table';
 import Add from './Add';
 import Edit from './Edit';
+import API_URL from "../../../api_config";
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [rooms, setRooms] = useState([]);
@@ -17,7 +18,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/room');
+        const response = await fetch(`${API_URL}/room`);
         if (response.ok) {
           const data = await response.json();
           setRooms(data);
@@ -54,7 +55,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:8000/room/${id}`, {
+          const response = await fetch(`${API_URL}/room/${id}`, {
             method: 'DELETE',
           });
           if (response.ok) {

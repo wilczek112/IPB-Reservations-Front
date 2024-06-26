@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import API_URL from "../../../api_config";
 
 const Add = ({ setEquipments, setIsAdding, setRefreshData }) => {
   const [name, setName] = useState('');
@@ -22,7 +23,7 @@ const Add = ({ setEquipments, setIsAdding, setRefreshData }) => {
       iconId: iconId,
     };
 
-    const response = await fetch('http://localhost:8000/equipment', {
+    const response = await fetch(`${API_URL}/equipment`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newEquipment),

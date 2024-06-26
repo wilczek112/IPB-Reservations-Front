@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import '../../index.css';
 import bcrypt from 'bcryptjs';
 import ActiveUser from '../Authentication/ActiveUser';
+import API_URL from "../../api_config";
 
 function ProfilePage() {
     const localuser = ActiveUser.getUser();
@@ -13,7 +14,7 @@ function ProfilePage() {
     const [newPassword, setNewPassword] = useState('');
 
     const fetchData = useCallback(async () => {
-        const response = await fetch(`http://localhost:8000/user/email/${localuser.email}`);
+        const response = await fetch(`${API_URL}/user/email/${localuser.email}`);
         const data = await response.json();
         setUser(data);
     }, [localuser.email]);
@@ -41,7 +42,7 @@ function ProfilePage() {
         const salt = bcrypt.genSaltSync(10);
         const hashedNewPassword = bcrypt.hashSync(newPassword, salt);
 
-        const response = await fetch(`http://localhost:8000/user/cph/${localuser.email}`, {
+        const response = await fetch(`${API_URL}/user/cph/${localuser.email}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

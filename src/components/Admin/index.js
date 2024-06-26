@@ -4,6 +4,7 @@ import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
 import ActiveUser from '../Authentication/ActiveUser';
+import API_URL from "../../api_config";
 
 function AdminReservations() {
     const user = ActiveUser.getUser();
@@ -17,7 +18,7 @@ function AdminReservations() {
     }, []);
 
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8000/reservation`);
+        const response = await fetch(`${API_URL}/reservation`);
         const data = await response.json();
         setPendingReservations(data.filter(reservation => reservation.Status === 'Pending').sort((a, b) => b.StartTime - a.StartTime));
         setDoneReservations(data.filter(reservation => reservation.Status !== 'Pending').sort((a, b) => b.StartTime - a.StartTime));
@@ -56,7 +57,7 @@ function AdminReservations() {
                 const reservationToUpdate = (tab === 'pending' ? pendingReservations : doneReservations).find(reservation => reservation._id === id);
                 reservationToUpdate.Status = action;
                 reservationToUpdate.ProfessorId = professorId;
-                const response = await fetch(`http://localhost:8000/reservation/${action.toLowerCase()}/${id}`, {
+                const response = await fetch(`${API_URL}/reservation/${action.toLowerCase()}/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',

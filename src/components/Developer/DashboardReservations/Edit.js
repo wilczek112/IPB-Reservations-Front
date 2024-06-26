@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import 'tailwindcss/tailwind.css';
 import '../../../index.css';
+import API_URL from "../../../api_config";
 
 const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => {
   const id = selectedReservation._id;
@@ -34,7 +35,7 @@ const Edit = ({ selectedReservation, setIsEditing, setRefreshData }) => {
       SchoolId: schoolId,
     };
 
-    const response = await fetch(`http://localhost:8000/reservation/${id}`, {
+    const response = await fetch(`${API_URL}/reservation/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedReservation),

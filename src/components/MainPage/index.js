@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'tailwindcss/tailwind.css';
+import API_URL from '../../api_config';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
 import ActiveUser from '../Authentication/ActiveUser';
@@ -20,7 +21,7 @@ function ReservationPage({ setIsAuthenticated }) {
     const professorId = user.professorId;
 
     useEffect(() => {
-        fetch('http://localhost:8000/equipment/')
+        fetch(`${API_URL}/equipment/`)
             .then(response => response.json())
             .then(data => {
                 setEquipmentList(data);

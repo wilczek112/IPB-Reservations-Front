@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import API_URL from "../../../api_config";
 
 const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
   const id = selectedRoom._id;
@@ -30,7 +31,7 @@ const Edit = ({ selectedRoom, setIsEditing, setRefreshData }) => {
       EquipmentList: equipmentList.split(','),
     };
 
-    const response = await fetch(`http://localhost:8000/room/${id}`, {
+    const response = await fetch(`${API_URL}/room/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedRoom),

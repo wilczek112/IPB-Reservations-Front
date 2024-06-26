@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import API_URL from "../../../api_config";
 
 const Edit = ({ selectedEquipment, setIsEditing, setRefreshData }) => {
   const id = selectedEquipment._id;
@@ -24,7 +25,7 @@ const Edit = ({ selectedEquipment, setIsEditing, setRefreshData }) => {
       iconId: iconId,
     };
 
-    const response = await fetch(`http://localhost:8000/equipment/${id}`, {
+    const response = await fetch(`${API_URL}/equipment/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedEquipment),

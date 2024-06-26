@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import bcrypt from 'bcryptjs';
+import API_URL from "../../../api_config";
 
 const Add = ({ setIsAdding, setRefreshData }) => {
   const [name, setName] = useState('');
@@ -32,7 +33,7 @@ const Add = ({ setIsAdding, setRefreshData }) => {
       password: hashedPassword,
     };
 
-    const response = await fetch('http://localhost:8000/user', {
+    const response = await fetch(`${API_URL}/user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser),

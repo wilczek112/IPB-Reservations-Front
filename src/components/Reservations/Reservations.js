@@ -4,6 +4,7 @@ import 'tailwindcss/tailwind.css';
 import Header from '../Header/Header';
 import '../../index.css';
 import ActiveUser from '../Authentication/ActiveUser';
+import API_URL from "../../api_config";
 
 function Reservations() {
     const user = ActiveUser.getUser();
@@ -14,7 +15,7 @@ function Reservations() {
     const [tab, setTab] = useState('pending');
 
     const fetchData = useCallback(async () => {
-        const response = await fetch(`http://localhost:8000/reservation/professor/${professorId}`);
+        const response = await fetch(`${API_URL}/reservation/professor/${professorId}`);
         const data = await response.json();
         const now = Date.now() / 1000;
         setPendingReservations(data.filter(reservation => reservation.Status === 'Pending').sort((a, b) => b.StartTime - a.StartTime));
@@ -60,7 +61,7 @@ function Reservations() {
                 const reservationToCancel = pendingReservations.find(reservation => reservation._id === id);
                 reservationToCancel.Status = 'Cancelled';
                 reservationToCancel.ProfessorId = professorId;
-                const response = await fetch(`http://localhost:8000/reservation/cancel/${id}`, {
+                const response = await fetch(`${API_URL}/reservation/cancel/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',

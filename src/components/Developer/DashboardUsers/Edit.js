@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import bcrypt from 'bcryptjs';
+import API_URL from "../../../api_config";
 
 const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
   const id = selectedUser._id;
@@ -34,7 +35,7 @@ const Edit = ({ selectedUser, setIsEditing, setRefreshData }) => {
       password: hashedPassword,
     };
 
-    const response = await fetch(`http://localhost:8000/user/${id}`, {
+    const response = await fetch(`${API_URL}/user/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedUser),

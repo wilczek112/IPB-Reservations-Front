@@ -7,6 +7,7 @@ import Header from './Header';
 import Table from './Table';
 import Add from './Add';
 import Edit from './Edit';
+import API_URL from "../../../api_config";
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [equipments, setEquipments] = useState([]);
@@ -17,7 +18,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/equipment');
+      const response = await fetch(`${API_URL}/equipment`);
       const data = await response.json();
       setEquipments(data);
     };
@@ -40,7 +41,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await fetch(`http://localhost:8000/equipment/${id}`, {
+        const response = await fetch(`${API_URL}/equipment/${id}`, {
           method: 'DELETE',
         });
 

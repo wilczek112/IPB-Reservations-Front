@@ -9,6 +9,7 @@ import bcrypt from 'bcryptjs';
 import Cookies from 'js-cookie';
 import '../../index.css';
 import Background from '../Background/background';
+import API_URL from "../../api_config";
 
 
 const Login = () => {
@@ -27,13 +28,13 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const userResponse = await axios.get(`http://localhost:8000/user/email/${emailInput}`);
+      const userResponse = await axios.get(`${API_URL}/user/email/${emailInput}`);
       const user = userResponse.data;
 
       if (user && bcrypt.compareSync(password, user.password)) {
         const tokenResponse = await axios({
           method: 'post',
-          url: 'http://localhost:8000/user/token',
+          url: `${API_URL}/user/token`,
           data: `username=${user.email}&password=${user.password}`,
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         });
