@@ -27,7 +27,7 @@ To login as developer use: developer@ipb.pt -> test
 
 As first step you need to download docker.
 
-App is prepaired for docker usage. To achieve this you simple have to download source code and run script "run docker.bat".
+App is prepaired for docker usage. To achieve this you simply have to download source code and run script "run docker.bat".
 
 If you are linux user you simply need to run command being in project folder "docker-compose up --build"
 
